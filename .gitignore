@@ -1,6 +1,8 @@
 # Build products
 WebHelper2Private-1.0.gir
 WebHelper2Private-1.0.typelib
+WebHelper2OldPrivate-1.0.gir
+WebHelper2OldPrivate-1.0.typelib
 webhelper/webhelper_private/config.js
 
 # C extensions
