@@ -1,0 +1,9 @@
+# C extensions
+*.o
+*.so
+*.la
+*.lo
+
+# Unit test / coverage reports
+test-results.xml
+*.log
