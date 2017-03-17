@@ -62,9 +62,9 @@ wait_for_connection_sync (Context *ctxt)
 {
   g_return_if_fail (ctxt->connection == NULL);
 
-  GMainContext *main = g_main_context_get_thread_default ();
+  GMainContext *mainctxt = g_main_context_get_thread_default ();
   while (ctxt->connection == NULL)
-    g_main_context_iteration (main, TRUE /* may block */);
+    g_main_context_iteration (mainctxt, TRUE /* may block */);
 
   g_assert (ctxt->connection);
 }
