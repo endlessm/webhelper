@@ -62,9 +62,9 @@ wait_for_connection_sync (Context *ctxt)
 {
   g_return_if_fail (ctxt->connection == NULL);
 
-  GMainContext *main = g_main_context_get_thread_default ();
+  GMainContext *mainctxt = g_main_context_get_thread_default ();
   while (ctxt->connection == NULL)
-    g_main_context_iteration (main, TRUE /* may block */);
+    g_main_context_iteration (mainctxt, TRUE /* may block */);
 
   g_assert (ctxt->connection);
 }
@@ -305,12 +305,11 @@ translate_html (WebKitDOMDocument *dom,
       /* Translate the text */
       if (WEBKIT_DOM_IS_HTML_ELEMENT (element))
         {
-          WebKitDOMHTMLElement *el_html = WEBKIT_DOM_HTML_ELEMENT (element);
-          gchar *inner_html = webkit_dom_html_element_get_inner_html (el_html);
+          WebKitDOMElement *el_html = WEBKIT_DOM_ELEMENT (element);
+          gchar *inner_html = webkit_dom_element_get_inner_html (el_html);
           gchar *normalized = normalize_string (inner_html);
           gchar *translated_html = translation_function (normalized, ctxt);
-          webkit_dom_html_element_set_inner_html (el_html, translated_html,
-                                                  &error);
+          webkit_dom_element_set_inner_html (el_html, translated_html, &error);
           if (error != NULL)
             {
               g_warning ("There was a problem translating '%s' to '%s': %s",

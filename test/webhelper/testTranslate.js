@@ -40,10 +40,9 @@ describe("Translation strategy", function() {
     let app;
 
     beforeEach(function() {
-        // FIXME In this version of GJS there is no Posix module, so fake the PID
-        let id_string = 'com.endlessm.webhelper.test' + GLib.get_real_time() + fake_pid;
         // Generate a unique ID for each app instance that we test
         let fake_pid = GLib.random_int();
+        let id_string = 'com.endlessm.webhelper.test' + GLib.get_real_time() + fake_pid;
         app = new WebHelperApplicationWithTranslatableText({
             application_id: id_string
         });
