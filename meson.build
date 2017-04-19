@@ -78,9 +78,10 @@ javascript_tests = [
     'test/webhelper/testWebActions2.js',
     'test/webhelper/testUpdateFontSize.js',
 ]
-include_path = join_paths(meson.current_source_dir(), 'webhelper')
+include_source = join_paths(meson.current_source_dir(), 'webhelper')
+include_paths = '@0@:@1@'.format(include_source, meson.current_build_dir())
 tests_environment = environment()
-tests_environment.prepend('GJS_PATH', include_path)
+tests_environment.prepend('GJS_PATH', include_paths)
 tests_environment.prepend('GI_TYPELIB_PATH', meson.current_build_dir())
 tests_environment.prepend('LD_LIBRARY_PATH', meson.current_build_dir())
 tests_environment.set('WEBHELPER_UNINSTALLED_EXTENSIONS_DIR',
