@@ -15,7 +15,8 @@ endif
 
 # Paths
 
-abs_libexecdir = join_paths(get_option('prefix'), get_option('libexecdir'))
+pkglibdir = join_paths(get_option('prefix'), get_option('libdir'),
+    meson.project_name())
 
 # Dependencies
 
@@ -33,7 +34,7 @@ gjs_modules_dir = join_paths(get_option('datadir'), 'gjs-1.0')
 install_data(javascript_sources, install_dir: gjs_modules_dir)
 
 js_config = configuration_data()
-js_config.set('libexecdir', abs_libexecdir)
+js_config.set('pkglibdir', pkglibdir)
 configure_file(input: 'webhelper/webhelper_private/config.js.in',
     output: 'config.js', configuration: js_config, install: true,
     install_dir: join_paths(gjs_modules_dir, 'webhelper_private'))
@@ -61,10 +62,9 @@ web_extension_sources = [
     'webhelper/webextensions/wh2jscutil.c',
     'webhelper/webextensions/wh2jscutil.h',
 ]
-web_extension_dir = join_paths(get_option('libexecdir'), 'webhelper2')
 shared_module('wh2extension', web_extension_sources, name_prefix: '',
     dependencies: [javascriptcore, webkit_webextension], install: true,
-    install_dir: web_extension_dir)
+    install_dir: pkglibdir)
 
 # Tests
 
@@ -78,9 +78,10 @@ javascript_tests = [
     'test/webhelper/testWebActions2.js',
     'test/webhelper/testUpdateFontSize.js',
 ]
-include_path = join_paths(meson.current_source_dir(), 'webhelper')
+include_source = join_paths(meson.current_source_dir(), 'webhelper')
+include_paths = '@0@:@1@'.format(include_source, meson.current_build_dir())
 tests_environment = environment()
-tests_environment.prepend('GJS_PATH', include_path)
+tests_environment.prepend('GJS_PATH', include_paths)
 tests_environment.prepend('GI_TYPELIB_PATH', meson.current_build_dir())
 tests_environment.prepend('LD_LIBRARY_PATH', meson.current_build_dir())
 tests_environment.set('WEBHELPER_UNINSTALLED_EXTENSIONS_DIR',

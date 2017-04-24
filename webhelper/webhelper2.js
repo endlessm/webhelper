@@ -9,7 +9,6 @@ const GObject = imports.gi.GObject;
 const Lang = imports.lang;
 const WebHelper2Private = imports.gi.WebHelper2Private;
 const WebKit2 = imports.gi.WebKit2;
-const LIBEXEC_SUBDIR = 'webhelper2';
 
 const Config = imports.webhelper_private.config;
 
@@ -189,8 +188,8 @@ const WebHelper = new Lang.Class({
         // Set up Webkit to load our web extension
         let context = WebKit2.WebContext.get_default();
         context.connect('initialize-web-extensions', () => {
-            let libexec = Gio.File.new_for_path(Config.LIBEXECDIR);
-            let path = libexec.get_child(LIBEXEC_SUBDIR).get_path();
+            let pkglib = Gio.File.new_for_path(Config.PKGLIBDIR);
+            let path = pkglib.get_path();
 
             let localpath = GLib.getenv('WEBHELPER_UNINSTALLED_EXTENSION_DIR');
             if (localpath)

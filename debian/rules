@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+#export DH_VERBOSE=1
+
+%:
+	dh $@ --with gir --builddirectory=_build
+
+override_dh_clean:
+	dh_clean
+	rm -rf _build

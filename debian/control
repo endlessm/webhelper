@@ -1,0 +1,43 @@
+Source: webhelper
+Section: libs
+Priority: optional
+Maintainer: Philip Chimento <philip@endlessm.com>
+Build-Depends: debhelper (>= 9),
+               gir1.2-endless-0,
+               gir1.2-glib-2.0,
+               gir1.2-gtk-3.0,
+               gir1.2-webkit2-4.0,
+               gjs (>= 1.40),
+               gobject-introspection,
+               jasmine-gjs (>= 2.2.0),
+               libgirepository1.0-dev (>= 1.30),
+               libwebkit2gtk-4.0-dev,
+               meson (>= 0.39.1),
+               ninja-build
+Standards-Version: 3.9.5
+Homepage: https://github.com/endlessm/webhelper
+
+Package: webhelper-0
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         gir1.2-endless-0,
+         gir1.2-glib-2.0,
+         gir1.2-gtk-3.0,
+         gir1.2-webhelper2private-1.0 (= ${binary:Version}),
+         gir1.2-webkit2-4.0,
+         gjs
+Replaces: eos-sdk-0-webhelper, eos-sdk-webhelper
+Provides: eos-sdk-0-webhelper, eos-sdk-webhelper
+Conflicts: eos-sdk-0-webhelper, eos-sdk-webhelper
+Description: Endless SDK web helper
+ Convenience library to simplify creation of web apps using the Endless SDK.
+
+Package: gir1.2-webhelper2private-1.0
+Section: introspection
+Architecture: any
+Depends: ${gir:Depends},
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: Endless SDK web helper
+ "Private" library used by WebHelper.
