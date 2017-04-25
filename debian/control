@@ -41,3 +41,10 @@ Depends: ${gir:Depends},
          ${shlibs:Depends}
 Description: Endless SDK web helper
  "Private" library used by WebHelper.
+
+Package: webhelper-0-dev
+Section: libdevel
+Architecture: any
+Depends: webhelper-0 (= ${binary:Version})
+Description: Endless SDK web helper
+ Development files for WebHelper.
