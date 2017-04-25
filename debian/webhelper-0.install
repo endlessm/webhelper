@@ -1,2 +1,2 @@
-usr/lib/webhelper/wh2extension.so
+usr/lib/*/webhelper/wh2extension.so
 usr/share/gjs-1.0/webhelper*
