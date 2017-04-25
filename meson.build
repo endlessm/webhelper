@@ -49,7 +49,7 @@ private_sources = [
     'webhelper/lib/wh2private.h',
 ]
 private_lib = library('webhelper2private', private_sources,
-    dependencies: webkit)
+    dependencies: webkit, install: true)
 gnome.generate_gir(private_lib, sources: private_sources, nsversion: '1.0',
     install: true, namespace: 'WebHelper2Private', symbol_prefix: 'wh2_',
     identifier_prefix: 'Wh2', includes: ['WebKit2-4.0'],
