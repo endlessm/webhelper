@@ -1,3 +1,10 @@
+webhelper (3:0-2) unstable; urgency=medium
+
+  * control: Add 'Breaks:" for eos-sdk-0-webhelper and eos-sdk-webhelper,
+    in order to ease upgrades.
+
+ -- Philip Chimento <philip@endlessm.com>  Wed, 26 Apr 2017 10:18:56 -0700
+
 webhelper (3:0-1) unstable; urgency=medium
 
   * Bump epoch to 3, to disambiguate from gir1.2-webhelper2private-1.0

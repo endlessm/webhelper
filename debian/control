@@ -30,6 +30,7 @@ Depends: ${shlibs:Depends},
 Replaces: eos-sdk-0-webhelper, eos-sdk-webhelper
 Provides: eos-sdk-0-webhelper, eos-sdk-webhelper
 Conflicts: eos-sdk-0-webhelper, eos-sdk-webhelper
+Breaks: eos-sdk-0-webhelper, eos-sdk-webhelper
 Description: Endless SDK web helper
  Convenience library to simplify creation of web apps using the Endless SDK.
 
