@@ -129,7 +129,7 @@ const WH2_DBUS_MAIN_PROGRAM_INTERFACE = '\
  * >});
  * >app.run(ARGV);
  */
-const WebHelper = new Lang.Class({
+var WebHelper = new Lang.Class({
     Name: 'WebHelper',
     GTypeName: 'Wh2WebHelper',
     Extends: GObject.Object,
