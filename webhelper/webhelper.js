@@ -42,7 +42,7 @@ const EOS_URI_SCHEME = 'endless://';
  * You should set up any WebViews that you create, by connecting
  * <web_actions_handler()>, so that they can handle custom action URIs.
  */
-const Application = new Lang.Class({
+var Application = new Lang.Class({
     Name: 'WebApplication',
     Extends: Endless.Application,
 
