@@ -222,7 +222,7 @@ var WebHelper = new Lang.Class({
 
         if (!this._web_actions.hasOwnProperty(function_name))
             throw new Error(('Undefined WebHelper action "%s". Did you define it with ' +
-                'WebHelper.Application.define_web_action()?').format(function_name));
+                'WebHelper.define_web_action()?').format(function_name));
 
         let parameters = {};
         if (f_call[1]) {
