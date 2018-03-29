@@ -262,7 +262,11 @@ if __name__ == '__main__':
     parser = Parser()
     rules = Rules()
 
-    out = subprocess.check_output(sys.argv[1:], universal_newlines=True)
+    try:
+        out = subprocess.check_output(sys.argv[1:], universal_newlines=True)
+    except subprocess.CalledProcessError as e:
+        sys.stdout.write(e.output)
+        raise e
 
     line_generator = parser.parse(io.StringIO(out))
     line_counter = 0
